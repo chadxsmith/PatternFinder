@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Newbie</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Dosis:300,400,500,600' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="nav_side">
+
+    <div class="nav_side-header">Search</div>
+
+    <form action="action_page.php">
+        <input type="text" name="firstname" value="">
+        <input type="submit" value="Submit">
+  </form>
+
+  	<div class="nav_side-header">Categories</div>
+
+  	<ul class="nav_side-subheader">
+      <li><a href="#">All</a></li>
+  	  <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">Ruby</a></li>
+      <li><a href="#">GIT</a></li>
+
+  	</ul>
+
+    <div class="nav_side-header">Social Media</div>
+    <div class="row">
+      <div class="col-md-9">
+          <div class="icon-row">
+              <a href="#"><i class="fa fa-envelope fa-lg"></i></a>
+              <a href="#"><i class="fa fa-google-plus fa-lg"></i></a>
+              <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
+              <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+          </div>
+      </div> <!-- end of col-md-6 -->
+  </div>
+
+
+  </div>
+
+<main>
+
+
+  <%= yield %>
+</main>
+
+</body>
+
+</html>

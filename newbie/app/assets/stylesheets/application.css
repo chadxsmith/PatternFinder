@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require font-awesome
+ *= require_self
+ */
+
+ .nav_side {
+	width: 20%;
+	background: #ed2656 no-repeat;
+	background-size: cover;
+	height: 100%;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	padding-top: 10px;
+	color: #fff;
+	font-weight: 200;
+	padding-left: 10px;
+	padding-right: 10px;
+/*	overflow-x: scroll;*/
+ }
+
+.nav_side-header {
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #fff;
+  margin-right: -10px;
+}
+
+.nav_side-subheader {
+/*	margin-bottom: 10px;*/
+	margin: 0px;
+  padding: 0px;
+  list-style: none;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding-left: 16px;
+}
+
+.nav_side-subheader li {
+  padding-top: 20px;
+
+}
+
+.nav_side-subheader a,
+.icon-row a {
+    color: #fff;
+ /*   text-decoration: none;*/
+}
+
+.nav_side-subheader a:hover,
+.icon-row a:hover  {
+    color: #fff;
+}
+
+.icon-row {
+  padding-top: 20px;
+}
+
+.icon-row i {
+  padding-left: 4px;
+}
+
+input[type=text] {
+  width: 97px;
+  height: 22.9px;
+  color: grey;
+}
+
+
+input[type=submit] {
+  width: 55px;
+  margin-top: 20px;
+  font-family:sans-serif;
+  color: grey;
+ font-size: 13px;
+}
+
+
+main{
+  margin-left:20%;
+  overflow:hidden;
+}
+
+li {
+  padding-left: 0px;
+}
