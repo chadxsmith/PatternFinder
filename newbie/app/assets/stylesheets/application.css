@@ -66,6 +66,13 @@
     color: #fff;
 }
 
+.nav_option-clicked {
+  background:white;
+}
+
+
+
+
 .icon-row {
   padding-top: 20px;
 }
@@ -97,4 +104,9 @@ main{
 
 li {
   padding-left: 0px;
+}
+
+li:target
+{
+  background-color:blue;
 }

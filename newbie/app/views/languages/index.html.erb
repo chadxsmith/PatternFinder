@@ -1,0 +1,154 @@
+<div class="container">
+
+<div class="col-md-8">
+
+<ul id="language_list">
+		<%@languages.each do |language| %>
+		<li id="list_item_<%= language.name %>"><%=language.name%>
+			<ul>
+					<% language.topics.each do |topic| %>
+					<li><%=topic.name%>
+						<ul>
+							<%topic.questions.each do |question| %>
+								<li><%= link_to question.title, language_topic_question_path(language,topic,question)%>
+								</li>
+							<%end%>
+						</ul>
+					</li>
+					<%end%>
+			</ul>
+		<%end%>
+	</li>
+
+</ul>
+<script>
+
+var mapper = ["HTML", "CSS", "JavaScript", "Ruby", "GIT"];
+
+for(var x = 0; x < mapper.length; x++){
+	var clickName = "#" + mapper[x];
+	$(clickName).on("click", function(){
+		var id = this.id;
+		var newid = "list_item_" + id;
+		var list_items = document.querySelectorAll("#language_list > li");
+		for (i = 0; i < list_items.length; i++) {
+			if (list_items[i].id != newid) {
+				list_items[i].style.display = "none"
+			}else{
+				list_items[i].style.display = "block"
+				// list_items[i].style.position = "absolute"
+				// list_items[i].style.overflow = "hidden"
+			}
+		}
+	});
+}
+//
+//
+// $("#html").on("click", function(){
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	console.log(list_item)
+// 	for (i = 0; i < list_item.length; i++) {
+// 		if (list_item[i].id != "list_item_HTML") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_HTML") {
+// 			list_item[i].style.visibility = "visible"
+// 			list_item[i].style.position = 'fixed'
+// 		}
+// 	}
+// })
+//
+// $("#css").on("click", function() {
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_item.length; i++) {
+// 		if (list_item[i].id != "list_item_CSS") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_CSS") {
+// 			list_item[i].style.visibility = "visible"
+// 			list_item[i].style.position = 'fixed'
+// 		}
+// 	}
+// })
+//
+// $("#javascript").on("click", function() {
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_item.length; i++) {
+// 		if (list_item[i].id != "list_item_JavaScript") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_JavaScript") {
+// 			list_item[i].style.visibility = "visible"
+// 			list_item[i].style.position = 'fixed'
+// 		}
+// 	}
+// })
+//
+//
+// $("#ruby").on("click", function() {
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_item.length; i++) {
+// 		if (list_item[i].id != "list_item_Ruby") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_Ruby") {
+// 			list_item[i].style.visibility = "visible"
+// 			list_item[i].style.position = 'fixed';
+// 		}
+// 	}
+// })
+//
+// $("#git").on("click", function() {
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_item.length; i++) {
+// 		if (list_item[i].id != "list_item_GIT") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_GIT") {
+// 			list_item[i].style.visibility = "visible"
+// 		}
+// 	}
+// })
+
+
+//
+// $("#css").on("click", function(){
+// 	var list_item = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_item.length; ++ {
+// 		if (list_item[i].id != "list_item_CSS") {
+// 			list_item[i].style.visibility = "hidden"
+// 		}
+// 		else if (list_item[i].id = "list_item_CSS") {
+// 			list_item[i].style.visibility = "visible"
+// 		}
+// 	})
+// })
+
+
+//
+//
+// $("#html").on("click", function(){
+// 	var list_items = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_items.length; i++) {
+// 			if(list_items[i].id != "list_item_HTML") {
+// 				list_items[i].style.visibility = "hidden";
+// 			}
+// 			else {
+// 				list_items[i].style.visibility = "hidden";
+// 			}
+// 	}
+// });
+//
+// $("#css").on("click", function(){
+// 	var list_items = document.querySelectorAll("#language_list > li");
+// 	for (i = 0; i < list_items.length; i++) {
+// 			if(list_items[i].id != "list_item_CSS") {
+// 				list_items[i].style.visibility = "hidden";
+// 			}
+// 	}
+// });
+
+
+
+</script>
+<!-- end of ul —->
