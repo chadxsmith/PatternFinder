@@ -4,7 +4,10 @@
 
 <ul id="language_list">
 		<%@languages.each do |language| %>
+
 		<li id="list_item_<%= language.name %>"><%=language.name%>
+
+
 			<ul>
 					<% language.topics.each do |topic| %>
 					<li><%=topic.name%>
@@ -20,28 +23,58 @@
 		<%end%>
 	</li>
 
+	<%=@everything%>
+
 </ul>
+
+<div class="ui-widget">
+  <label for="tags"></label>
+  <input id="tags">
+</div>
+
 <script>
 
-var mapper = ["HTML", "CSS", "JavaScript", "Ruby", "GIT"];
+$(function() {
+	var availableTags = [
+		for (i = 0; i < 10; i++ ) {
+			(<%=@everything%>[i])
+		}
+	];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
+
+
+
+var mapper = ["All","HTML", "CSS", "JavaScript", "Ruby", "GIT"];
 
 for(var x = 0; x < mapper.length; x++){
 	var clickName = "#" + mapper[x];
+	console.log(clickName)//  #HTML
+
+	//HTML to GIT//
 	$(clickName).on("click", function(){
 		var id = this.id;
-		var newid = "list_item_" + id;
+		var newid = "list_item_" + id; //list_item_HTML
+
+		console.log(newid)
+
 		var list_items = document.querySelectorAll("#language_list > li");
 		for (i = 0; i < list_items.length; i++) {
-			if (list_items[i].id != newid) {
-				list_items[i].style.display = "none"
-			}else{
+			if (list_items[i].id == newid) {  //if not "HTML"
 				list_items[i].style.display = "block"
-				// list_items[i].style.position = "absolute"
-				// list_items[i].style.overflow = "hidden"
+			}
+			else if (newid == "list_item_All") {
+				list_items[i].style.display = "block"
+			}else{
+				list_items[i].style.display = "none"
 			}
 		}
 	});
 }
+
+
 //
 //
 // $("#html").on("click", function(){
