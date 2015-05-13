@@ -23,7 +23,6 @@
 		<%end%>
 	</li>
 
-	<%=@everything%>
 
 </ul>
 
@@ -34,12 +33,21 @@
 
 <script>
 
+
+
+
+
+
 $(function() {
-	var availableTags = [
-		for (i = 0; i < 10; i++ ) {
-			(<%=@everything%>[i])
+	// console.log("#<%=@everything%>")
+	var availableTags = "<%@everything%>";
+ 	  for(i = 0; i <"<%@everything%>".length; i++ ) {
+			"<%@everything%>"[i]
 		}
-	];
+	// 	("#<%=@everything%>")
+	//
+	// ]
+	;
 	$( "#tags" ).autocomplete({
 		source: availableTags
 	});
