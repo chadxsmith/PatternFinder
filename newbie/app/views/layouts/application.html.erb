@@ -9,14 +9,18 @@
 </head>
 <body>
 
+
   <div class="nav_side">
+
+    <img src="http://chadxsmith.co/images/logo.png">
 
     <div class="nav_side-header">Search</div>
 
-    <form action="action_page.php">
-        <input type="text" name="firstname" value="">
-        <input type="submit" value="Submit">
-  </form>
+  <div class="ui-widget">
+    <label for="tags"></label>
+    <input type="text" id="tags">
+    <input type="submit" value="Submit">
+  </div>
 
   	<div class="nav_side-header">Categories</div>
 
@@ -56,3 +60,39 @@
 </body>
 
 </html>
+
+<script>
+
+
+
+
+$(function() {
+
+
+	var responses = []
+
+		$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: "http://localhost:3000#"
+		}).done(function(response) {
+			for (i = 0; i < response.length; i++) {
+					responses.push(response[i]["title"])
+			}
+
+			$( "#tags" ).autocomplete({
+				source: responses
+			});
+		})
+});
+
+// save the value of the input field
+// what the value is associated to within the question object
+// option 1) redirect to the object's show (within ajax )
+
+
+
+
+}
+
+</script>

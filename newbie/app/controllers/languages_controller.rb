@@ -7,18 +7,13 @@ class LanguagesController < ApplicationController
         @questions = Question.all
         @answers = Answer.all
         @everything = []
-
-        @languages.each { |language|  @everything.push(language).to_s }
-        @topics.each { |topic|  @everything.push(topic).to_s }
-        @questions.each { |question|  @everything.push(question).to_s }
-        @answers.each { |answer|  @everything.push(answer).to_s }
-
+        @question_info = @questions.map {|q| [ q.title, language_topic_question_path(Language.first, q.topic, q)]   }
+        # [q1, q2]
+        # [["How do I..", "/languages/12/topics/2/question/1"], ["Should I..", "/languages/12/topics/4/question/2"]    ]
 
         respond_to do |format|
-
-        format.html { render :index}
-        format.json { render json: @everything}
-
+          format.html { render :index}
+          format.json { render json: @question_info}
         end
     end
 

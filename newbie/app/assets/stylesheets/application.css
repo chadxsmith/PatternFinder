@@ -16,6 +16,12 @@
  *= require_self
  */
 
+/* body {
+    font-family: "Dosis", serif;
+ }*/
+  body {
+    background-color: #f2f2f2;
+  }
  .nav_side {
 	width: 20%;
 	background: #ed2656 no-repeat;
@@ -72,7 +78,9 @@
 }
 
 
-
+input {
+  color: red,
+}
 
 .icon-row {
   padding-top: 20px;
@@ -83,7 +91,7 @@
 }
 
 input[type=text] {
-  width: 97px;
+  width: 160px;
   height: 22.9px;
   color: grey;
 }
@@ -111,3 +119,35 @@ li:target
 {
   background-color:blue;
 }
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.test {
+  font-size: 3.375em;
+  font-weight: 400;
+  color: #838383;
+}
+.test-again {
+  color: #838383;
+  font-size: 1.700em;
+  font-weight: 300;
+}
+.fold {
+  border-bottom: 2px solid #cbcaca;
+}
+.ui-menu-item {
+  position: relative;
+}
+/*#list_item_HTML {
+  border: 1px solid red;
+}*/
