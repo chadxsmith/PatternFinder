@@ -1,0 +1,101 @@
+<div class="container">
+
+<div class="col-md-8">
+
+<ul id="language_list">
+		<%@languages.each do |language| %>
+
+	<div class="test">
+
+		<li class="language_start" id="list_item_<%=language.name%>"><%=language.name%>
+
+	</div>
+
+			<ul>
+					<% language.topics.each do |topic| %>
+
+
+<div class="test-again">
+
+					<li><%=topic.name%>
+</div>
+
+						<ul>
+
+							<%topic.questions.each do |question| %>
+
+								<li><%= link_to question.title, language_topic_question_path(language,topic,question)%>
+
+								</li>
+							<%end%><br><br>
+						</ul>
+					</li>
+					<%end%>
+			</ul>
+		<%end%>
+	</li>
+
+
+</ul>
+
+
+<script>
+
+
+$(function() {
+
+
+	var questions = [];
+
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: "http://localhost:3000#"
+	}).done(function(response) {
+			console.log(response);
+			for (i = 0; i < response.length; i++) {
+					questions.push({label:response[i][0], value:response[i][1]})
+			}
+
+			$( "#tags" ).autocomplete({
+				source: questions,
+				select: function(event, ui) {
+					var destination = ui.item.value
+					window.location.assign(destination)
+				}
+			});
+
+		});
+});
+
+
+
+var mapper = ["All","HTML", "CSS", "JavaScript", "Ruby", "GIT"];
+
+for(var x = 0; x < mapper.length; x++){
+	var clickName = "#" + mapper[x];
+	console.log(clickName)//  #HTML
+
+	//HTML to GIT//
+	$(clickName).on("click", function(){
+		var id = this.id;
+		var newid = "list_item_" + id; //list_item_HTML
+
+		console.log(newid)
+
+		var list_items = document.querySelectorAll("#language_list > li");
+		for (i = 0; i < list_items.length; i++) {
+			if (list_items[i].id == newid) {  //if not "HTML"
+				list_items[i].style.display = "block"
+			}
+			else if (newid == "list_item_All") {
+				list_items[i].style.display = "block"
+			}else{
+				list_items[i].style.display = "none"
+			}
+		}
+	});
+}
+
+</script>
+<!-- end of ul —->

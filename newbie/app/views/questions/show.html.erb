@@ -1,0 +1,77 @@
+<div class="container">
+
+	<div class="col-md-10">
+
+		<div class="row">
+
+			<section class="fold">
+				<br>
+		
+				<a><%=link_to "Home", root_path%></a>  > <%=@language.name%>
+
+			</section>
+	
+		</div>
+
+		<div class="row">
+				<br>
+
+				<div class="test-again"><%=@question.title%></div>
+
+		</div>
+
+		<div class="row">
+
+				<br>
+
+					<%=@question.description%>
+
+				<br>
+
+		</div>
+
+		<div class="row">
+
+				<br>
+
+				<code><%=@question.answer.code%></code>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+
+<script>
+
+
+$(function() {
+
+
+	var questions = [];
+
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: "http://localhost:3000#"
+	}).done(function(response) {
+			console.log(response);
+			for (i = 0; i < response.length; i++) {
+					questions.push({label:response[i][0], value:response[i][1]})
+			}
+
+			$( "#tags" ).autocomplete({
+				source: questions,
+				select: function(event, ui) {
+					var destination = ui.item.value
+					window.location.assign(destination)
+				}
+			});
+
+		});
+});
+
+</script>
