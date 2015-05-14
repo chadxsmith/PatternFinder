@@ -62,11 +62,18 @@ $(function() {
 				select: function(event, ui) {
 					var destination = ui.item.value
 					window.location.assign(destination)
+					this.value = "";
+					return false;
 				}
 			});
 
 		});
 });
+
+jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+  var ul = this.menu.element;
+  ul.outerWidth(this.element.outerWidth());
+}
 
 
 

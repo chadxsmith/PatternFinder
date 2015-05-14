@@ -19,6 +19,13 @@
 /* body {
     font-family: "Dosis", serif;
  }*/
+
+.ui-menu-item {
+  border-bottom: 1px #838383 solid;
+  color: #838383;
+
+}
+
   body {
     background-color: #f2f2f2;
   }
@@ -145,9 +152,8 @@ ul {
 .fold {
   border-bottom: 2px solid #cbcaca;
 }
-.ui-menu-item {
-  position: relative;
-}
+
+
 /*#list_item_HTML {
   border: 1px solid red;
 }*/
