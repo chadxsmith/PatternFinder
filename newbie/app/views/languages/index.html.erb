@@ -6,37 +6,31 @@
 <ul id="language_list">
 		<%@languages.each do |language| %>
 
-	<div class="test">
+		<li class="language_name" id="list_item_<%=language.name%>"><%=language.name%>
 
-	</div>
-
-		<li class="language_start" id="list_item_<%=language.name%>"><%=language.name%>
 
 
 			<ul>
 					<% language.topics.each do |topic| %>
 
 
-<div class="test-again">
-
-					<li><%=topic.name%>
-</div>
+					<li class="language_topic"><%=topic.name%>
 
 						<ul>
 
 							<%topic.questions.each do |question| %>
 
-								<li><%= link_to question.title, language_topic_question_path(language,topic,question)%>
+								<li class="language_question"><%= link_to question.title, language_topic_question_path(language,topic,question)%>
 
 								</li>
-							<%end%><br><br>
+							<%end%>
 						</ul>
 					</li>
 					<%end%>
-			</ul>
+			</ul><br>
 		<%end%>
-	</li>
 
+	</li>
 </div>
 </ul>
 
@@ -51,76 +45,34 @@ var searchTerm;
 
 $("#submit").click(function() {
 
-	  var searchTerm = $('#tags').val();
-		console.log(searchTerm)
-	  $(".test").nextAll().remove()
+	var responseHolder = []
+	console.log(responseHolder)
 
-		$.ajax({
+	  var searchTerm = $('#tags').val();
+
+	  $("#content").nextAll().remove()
+		$("#placeHolder").append("<div>Search Results</div>")
+
+
+			$.ajax({
 			type: 'GET',
 			dataType: 'json',
 			url: "http://localhost:3000#"
-		}).done(function(response) {
+		}).done(function grabber(response) {
 			      for (i = 0; i < response.length; i++) {
-						var responseFinal = []
-						var esponseSubmit = (response[i][0].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
-
-						console.log(responseSubmit)
-
-						if (responseSubmit === response[i][0] ) {
-						responseFinal.push(response[i][0])
-					}
-
-
-
-									// var matcher = new RegEx("\\b" + searchTerm, "g");
-									// "this is my string".match(matcher);
-									//
-									// var str = "Watch out for the rock!".match(/r?or?/g)
-									//
-									// str then contains ["o","or","ro"]
-									//
-									//
-									// var turtles = "I like turtles. Let's make some turtle soup.";
-									// var wordToMatch = "turt";
-
-									// console.log(response[i]["title"].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")));
-
-
-
+						var responseSearcher = (response[i][0].includes(searchTerm))
+						if (responseSearcher == 1) {
+							responseHolder.push({label:response[i][0], value:response[i][1]})
+							var lastEntry = responseHolder
+							console.log(lastEntry)
+							for (i = 0; i < lastEntry.length; i++) {
+							$("#placeHolder").append("<div><a href='" + lastEntry[i].value + "'>" + lastEntry[i].label + "</a></div>")
+							}
 
 						}
-			      // return responseSubmit
-			      // for (i = 0; i < responseSubmit.length; i++) {
-			      //   $( "#before-remove" ).append( "<p>" + responseSubmit + "</p>" )
-						//
-			      // }
-
+					}
 		});
-
 });
-
-//   // var searchTerm = $('#submit').val();
-//   // $('#begin').nextAll().remove()
-//
-//   $.ajax({
-//     type: 'GET',
-//     dataType: 'json',
-//     url: "http://localhost:3000/narrators"
-//   }).done(function(response){
-//       // for (i = 0; i < response.length; i++) {
-//       //   var responseSubmit = []
-//       //   if (response[i]["title"] == searchTerm) {
-//       //     responseSubmit.push(response[i]["title"])
-//       //   console.log(responseSubmit)
-//       //   }
-//       // return responseSubmit
-//       // for (i = 0; i < responseSubmit.length; i++) {
-//       //   $( "#before-remove" ).append( "<p>" + responseSubmit + "</p>" )
-// 			//
-//       // }
-//   })
-// })
-
 
 
 ///////////////////////////////////////////////////////////////// Autocomplete

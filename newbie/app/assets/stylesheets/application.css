@@ -140,21 +140,27 @@ ul {
   list-style-type: none;
 }
 
-.test {
+.language_name {
   font-size: 3.375em;
   font-weight: 400;
   color: #838383;
 }
-.test-again {
+
+.language_topic {
+  font-size: 0.600em;
   color: #838383;
-  font-size: 1.700em;
   font-weight: 300;
 }
+
+.language_question {
+  font-size: 0.500em;
+  font-weight: 200;
+}
+
 .fold {
   border-bottom: 2px solid #cbcaca;
 }
 
-
-/*#list_item_HTML {
-  border: 1px solid red;
-}*/
+#placeHolder {
+  margin-left: 23%;
+}
