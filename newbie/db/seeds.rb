@@ -75,77 +75,117 @@ html = Language.create!(
 
 
 
-
-# html = Language.create!(name:"HTML")
-# html_topic = html.topics.create!(name:"Hyperlinks")
-#
-# html_topic_question = html_topic.questions.create!(title:"Can do I....?", description: "Lorem ipsum dolor sit amet, consectetur
-# 	adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-# 		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-# 		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-# 		 deserunt mollit anim id est laborum")
-# html_topic_question_answer = html_topic_question.build_answer({code: "This is code"}) #"build__" was used since the
-# # question table used "has one" as it's association for answer
-# html_topic_question_answer.save
-#
-# html_topic_question2 = html_topic.questions.create!(title:"Should do I....?", description: "Lorem ipsum dolor sit amet, consectetur
-# 	adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-# 		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-# 		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-# 		 deserunt mollit anim id est laborum")
-# html_topic_question2_answer = html_topic_question2.build_answer({code: "This is code"}) #"build__" was used since the
-# # question table used "has one" as it's association for answer
-# html_topic_question2_answer.save
-
-
-
 #CSS
 
 
 #-----------------------------------------------------------------------------#
 
-css = Language.create!(name:"CSS")
-css_topic = css.topics.create!(name:"Centering Text")
+css = Language.create!(
+			name:"CSS"
+)
+		centering_text = Topic.create!(
+			name:"Centering Text",
+			language_id: css["id"]
+		)
 
-css_topic_question = css_topic.questions.create(title:"How do I center lines of text? ", description:"The most common and (therefore) easiest type of centering is that of lines of text in a paragraph or in a heading. CSS has the property 'text-align' for that:")
-css_topic_question_answer = css_topic_question.build_answer({code: "P { text-align: center }
-H2 { text-align: center }"})
+		centering_text_q1 = Question.create!(
+			title:"How do I center lines of text? ",
+			description:"The most common and (therefore) easiest type of centering is that of lines of text in a paragraph or in a heading. CSS has the property 'text-align' for that:",
+			topic_id: centering_text["id"]
+		)
+
+		centering_text_a1 = centering_text_q1.build_answer({
+					code: "<form id=""frm1"" action=""form_action.asp"">
+								First name: <input type=""text"" name=""fname""><br>
+								Last name: <input type=""text"" name=""lname""><br><br>
+								<input type=""button"" onclick=""myFunction()"" value=""Submit"">
+							</form>"
+		})
+
+		centering_text_a1.save
 
 
-css_topic_question_answer.save
+
+		centering_images = Topic.create!(
+			name:"Centering Images",
+			language_id: css["id"]
+		)
+
+		centering_images_q1 = Question.create!(
+			title:"How do I center lines of images? ",
+			description:"Sometimes it is not the text that needs to be centered, but the block as a whole. Or, phrased differently: we want the left and right margin to be equal. The way to do that is to set the margins to 'auto'. This is normally used with a block of fixed width, because if the block itself is flexible, it will simply take up all the available width. Here is an example:",
+			topic_id: centering_images["id"]
+		)
+
+		centering_images_a1 = centering_images_q1.build_answer({
+					code: "P.blocktext {
+						    margin-left: auto;
+						    margin-right: auto;
+						    width: 6em
+							  }"
+					  })
+
+
+
+		centering_images_a1.save
+
+
+
 
 
 #JavaScript
 
 #-----------------------------------------------------------------------------#
 
-javascript = Language.create!(name:"JavaScript")
-javascript_topic = javascript.topics.create!(name:"Functions")
+javascript = Language.create!(
+		name:"JavaScript"
+)
 
-javascript_topic_question = javascript_topic.questions.create(title:"Did do I.....?", description:"Lorem ipsum dolor sit amet, consectetur
-	adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-		 deserunt mollit anim id est laborum")
-javascript_topic_question_answer = javascript_topic_question.build_answer({code: "This is code"})
-javascript_topic_question_answer.save
+		functions = Topic.create!(
+		name:"Functions",
+		language_id: javascript["id"]
 
+		)
+
+		functions_q1 = Question.create!(
+		title:"How do I invoke a function?",
+		description:"The code in a function is not executed when the function is defined. It is executed when the function is invoked.
+		Some people use the term ""call a function"" instead of ""invoke a function"".
+		It is also quite common to say ""call upon a function"", ""start a function"", or ""execute a function""",
+		topic_id: functions["id"]
+		)
+
+		functionions_a1 = functions_q1.build_answer({
+			code: "function myFunction(a, b) {return a * b;}
+			myFunction(10, 2);// myFunction(10, 2) will return 20"
+			})
+
+		functionions_a1.save
 
 #Ruby
 
 #-----------------------------------------------------------------------------#
 
-ruby = Language.create!(name:"Ruby")
-ruby_topic = ruby.topics.create!(name:"Hashes")
+ruby = Language.create!(
+		name:"Ruby"
+)
 
-ruby_topic_question = ruby_topic.questions.create(title:"Do you.....?", description:"Lorem ipsum dolor sit amet, consectetur
-	adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-		 deserunt mollit anim id est laborum")
-ruby_topic_question_answer = ruby_topic_question.build_answer({code: "This is code"})
-ruby_topic_question_answer.save
+		hash = Topic.create!({
+		name:"Hashes",
+		language_id: ruby["id"]
+		})
 
+		hash_q1 = Question.create!(
+		title:"How do I create a hash?",
+		description:"As with arrays, there is a variety of ways to create hashes. You can create an empty hash with the new class method:",
+		topic_id: hash["id"]
+		)
+
+		hash_a1 = hash_q1.build_answer({
+			code: "months = Hash.new  OR  months = Hash.new( ""month"" )"
+			})
+
+		hash_a1.save
 
 
 
@@ -153,18 +193,27 @@ ruby_topic_question_answer.save
 
 #-----------------------------------------------------------------------------#
 
-git = Language.create!(name:"GIT")
-git_topic = git.topics.create!(name:"Merge")
 
-git_topic_question = git_topic.questions.create(title:"Something else.....?", description:"Lorem ipsum dolor sit amet, consectetur
-	adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-		velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-		 deserunt mollit anim id est laborum")
-git_topic_question_answer = git_topic_question.build_answer({code: "This is code"})
-git_topic_question_answer.save
+git = Language.create!(
+		name:"GIT"
+)
 
+		switch_and_check_branch = Topic.create!({
+		name:"Switch and Checkout Branch",
+		language_id: git["id"]
+		})
 
+		switch_and_check_branch_q1 = Question.create!(
+		title:"How do I switch and checkout a new branch?",
+		description:"To create a branch and switch to it at the same time, you can run the following:",
+		topic_id: switch_and_check_branch["id"]
+		)
+
+		switch_and_check_branch_a1 = switch_and_check_branch_q1.build_answer({
+			code: "$ git checkout -b iss53 Switched to a new branch ""iss53"""
+		})
+
+		switch_and_check_branch_a1.save
 
 
 
