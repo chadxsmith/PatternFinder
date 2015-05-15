@@ -5,5 +5,6 @@ class QuestionsController < ApplicationController
         @language = Language.find(params[:language_id])
         @topic = Topic.find(params[:topic_id])
     end
+    
 
 end

@@ -6,6 +6,8 @@ class LanguagesController < ApplicationController
         @topics = Topic.all
         @questions = Question.all
         @answers = Answer.all
+        @question_query = params[:question]
+
         @everything = []
         @question_info = @questions.map {|q| [ q.title, language_topic_question_path(Language.first, q.topic, q)]   }
         # [q1, q2]
@@ -21,5 +23,9 @@ class LanguagesController < ApplicationController
     def show
         @language = Language.find(params[:id])
     end
+
+    # def new
+    #   @question_query = params[:question]
+    # end
 
 end

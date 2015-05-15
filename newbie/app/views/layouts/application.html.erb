@@ -9,18 +9,23 @@
 </head>
 <body>
 
+<div id="before-remove">
 
-  <div class="nav_side">
+  <div id="begin" class="nav_side">
 
     <img src="http://chadxsmith.co/images/logo.png">
 
     <div class="nav_side-header">Search</div>
 
-  <div class="ui-widget">
-    <label for="tags"></label>
-    <input type="text" id="tags">
-    <input type="submit" value="Submit">
-  </div>
+
+            <div class="ui-widget">
+              <label for="tags"></label>
+              <input type="text" id="tags">
+              <input type="submit" value="Submit" id="submit">
+            </div>
+
+
+
 
   	<div class="nav_side-header">Categories</div>
 
@@ -51,6 +56,8 @@
 
   </div>
 
+</div>
+
 <main>
 
 
@@ -66,6 +73,26 @@
 
 
 
+
+
+Narrator.prototype = {
+	search: function(){
+		$.ajax({
+			type: 'GET',
+			// data: { narrator: {gender: this.gender, accent: this. accent, voices: this.voices}}
+			dataType: 'json',
+			url: "http://localhost:3000/narrators"
+		}).done(function(response){
+			  response[i]["title"]
+		}).fail(function(){
+			console.log("failure")
+		}).always(function(){
+			console.log("you managed to do something right")
+		})
+	}
+}
+
+
 $(function() {
 
 
@@ -78,8 +105,9 @@ $(function() {
 		}).done(function(response) {
 			for (i = 0; i < response.length; i++) {
 					responses.push(response[i]["title"])
-			}
 
+			}
+      console.log(response[i]["title"])
 			$( "#tags" ).autocomplete({
 				source: responses
 			});

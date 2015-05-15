@@ -22,6 +22,7 @@
 
 .ui-menu-item {
   border-bottom: 1px #838383 solid;
+  font-weight: 400;
   color: #838383;
 
 }

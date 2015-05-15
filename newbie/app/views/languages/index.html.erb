@@ -2,14 +2,17 @@
 
 <div class="col-md-8">
 
+
 <ul id="language_list">
 		<%@languages.each do |language| %>
 
 	<div class="test">
 
+	</div>
+
 		<li class="language_start" id="list_item_<%=language.name%>"><%=language.name%>
 
-	</div>
+
 
 			<ul>
 					<% language.topics.each do |topic| %>
@@ -35,13 +38,86 @@
 		<%end%>
 	</li>
 
-
+</div>
 </ul>
 
 
 <script>
 
+///////////////////////////////////////////////////////////////// Search
 
+
+var searchTerm;
+
+
+$("#submit").click(function() {
+
+	  var searchTerm = $('#tags').val();
+		console.log(searchTerm)
+	  $(".test").nextAll().remove()
+
+		$.ajax({
+			type: 'GET',
+			dataType: 'json',
+			url: "http://localhost:3000#"
+		}).done(function(response) {
+			      for (i = 0; i < response.length; i++) {
+							var responseSubmit = (response[i]["title"].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
+
+
+
+									// var matcher = new RegEx("\\b" + searchTerm, "g");
+									// "this is my string".match(matcher);
+									//
+									// var str = "Watch out for the rock!".match(/r?or?/g)
+									//
+									// str then contains ["o","or","ro"]
+									//
+									//
+									// var turtles = "I like turtles. Let's make some turtle soup.";
+									// var wordToMatch = "turt";
+
+									// console.log(response[i]["title"].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")));
+
+
+
+
+						}
+			      // return responseSubmit
+			      // for (i = 0; i < responseSubmit.length; i++) {
+			      //   $( "#before-remove" ).append( "<p>" + responseSubmit + "</p>" )
+						//
+			      // }
+
+		});
+
+});
+
+//   // var searchTerm = $('#submit').val();
+//   // $('#begin').nextAll().remove()
+//
+//   $.ajax({
+//     type: 'GET',
+//     dataType: 'json',
+//     url: "http://localhost:3000/narrators"
+//   }).done(function(response){
+//       // for (i = 0; i < response.length; i++) {
+//       //   var responseSubmit = []
+//       //   if (response[i]["title"] == searchTerm) {
+//       //     responseSubmit.push(response[i]["title"])
+//       //   console.log(responseSubmit)
+//       //   }
+//       // return responseSubmit
+//       // for (i = 0; i < responseSubmit.length; i++) {
+//       //   $( "#before-remove" ).append( "<p>" + responseSubmit + "</p>" )
+// 			//
+//       // }
+//   })
+// })
+
+
+
+///////////////////////////////////////////////////////////////// Autocomplete
 $(function() {
 
 
@@ -76,6 +152,7 @@ jQuery.ui.autocomplete.prototype._resizeMenu = function () {
 }
 
 
+///////////////////////////////////////////////////////////////// Filter Index View
 
 var mapper = ["All","HTML", "CSS", "JavaScript", "Ruby", "GIT"];
 
