@@ -9,14 +9,23 @@
 </head>
 <body>
 
-  <div class="nav_side">
+<div id="before-remove">
+
+  <div id="begin" class="nav_side">
+
+    <img src="http://chadxsmith.co/images/logo.png">
 
     <div class="nav_side-header">Search</div>
 
-    <form action="action_page.php">
-        <input type="text" name="firstname" value="">
-        <input type="submit" value="Submit">
-  </form>
+
+            <div class="ui-widget">
+              <label for="tags"></label>
+              <input type="text" id="tags">
+              <input type="submit" id="submit">
+            </div>
+
+
+
 
   	<div class="nav_side-header">Categories</div>
 
@@ -47,6 +56,8 @@
 
   </div>
 
+</div>
+
 <main>
 
 
@@ -56,3 +67,59 @@
 </body>
 
 </html>
+
+<script>
+
+
+
+
+
+
+Narrator.prototype = {
+	search: function(){
+		$.ajax({
+			type: 'GET',
+			// data: { narrator: {gender: this.gender, accent: this. accent, voices: this.voices}}
+			dataType: 'json',
+			url: "http://localhost:3000/narrators"
+		}).done(function(response){
+			  response[i]["title"]
+		}).fail(function(){
+			console.log("failure")
+		}).always(function(){
+			console.log("you managed to do something right")
+		})
+	}
+}
+
+
+$(function() {
+
+
+	var responses = []
+
+		$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: "http://localhost:3000#"
+		}).done(function(response) {
+			for (i = 0; i < response.length; i++) {
+					responses.push(response[i]["title"])
+			}
+
+			$( "#tags" ).autocomplete({
+				source: responses
+			});
+		})
+});
+
+// save the value of the input field
+// what the value is associated to within the question object
+// option 1) redirect to the object's show (within ajax )
+
+
+
+
+}
+
+</script>

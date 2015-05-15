@@ -13,7 +13,6 @@
 		<li class="language_start" id="list_item_<%=language.name%>"><%=language.name%>
 
 
-
 			<ul>
 					<% language.topics.each do |topic| %>
 
@@ -63,7 +62,10 @@ $("#submit").click(function() {
 		}).done(function(response) {
 			      for (i = 0; i < response.length; i++) {
 						var responseFinal = []
-						var responseSubmit = (response[i][0].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
+						var esponseSubmit = (response[i][0].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
+
+						console.log(responseSubmit)
+
 						if (responseSubmit === response[i][0] ) {
 						responseFinal.push(response[i][0])
 					}
