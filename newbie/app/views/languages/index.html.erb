@@ -62,7 +62,12 @@ $("#submit").click(function() {
 			url: "http://localhost:3000#"
 		}).done(function(response) {
 			      for (i = 0; i < response.length; i++) {
-							var responseSubmit = (response[i]["title"].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
+						var responseFinal = []
+						var responseSubmit = (response[i][0].match(new RegExp("\\b" + searchTerm + "\\w+\\b", "g")))
+						console.log(responseSubmit)
+						if (responseSubmit === response[i][0] ) {
+						responseFinal.push(response[i][0])
+					}
 
 
 

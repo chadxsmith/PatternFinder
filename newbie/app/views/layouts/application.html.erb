@@ -21,7 +21,7 @@
             <div class="ui-widget">
               <label for="tags"></label>
               <input type="text" id="tags">
-              <input type="submit" value="Submit" id="submit">
+              <input type="submit" id="submit">
             </div>
 
 
@@ -105,9 +105,8 @@ $(function() {
 		}).done(function(response) {
 			for (i = 0; i < response.length; i++) {
 					responses.push(response[i]["title"])
-
 			}
-      console.log(response[i]["title"])
+
 			$( "#tags" ).autocomplete({
 				source: responses
 			});
