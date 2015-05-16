@@ -32,7 +32,7 @@
   }
  .nav_side {
 	width: 20%;
-	background: #ed2656 no-repeat;
+	background: #34495e no-repeat;
 	background-size: cover;
 	height: 100%;
 	position: fixed;
@@ -159,6 +159,17 @@ ul {
 
 .fold {
   border-bottom: 2px solid #cbcaca;
+  color: #838383;
+  font-weight: 400;
+}
+.question_title {
+  color: #838383;
+  font-weight: 400;
+  font-size: 2em;
+}
+.question_description {
+  color: #838383;
+  font-weight: 400;
 }
 
 #placeHolder {

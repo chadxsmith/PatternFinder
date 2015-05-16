@@ -58,17 +58,15 @@ $("#submit").click(function() {
 			type: 'GET',
 			dataType: 'json',
 			url: "http://localhost:3000#"
-		}).done(function grabber(response) {
+		}).done(function(response) {
 			      for (i = 0; i < response.length; i++) {
 						var responseSearcher = (response[i][0].includes(searchTerm))
 						if (responseSearcher == 1) {
 							responseHolder.push({label:response[i][0], value:response[i][1]})
-							var lastEntry = responseHolder
-							console.log(lastEntry)
+							var lastEntry = responseHolder.pop()
 							for (i = 0; i < lastEntry.length; i++) {
 							$("#placeHolder").append("<div><a href='" + lastEntry[i].value + "'>" + lastEntry[i].label + "</a></div>")
 							}
-
 						}
 					}
 		});
