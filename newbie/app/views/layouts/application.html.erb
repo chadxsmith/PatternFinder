@@ -72,38 +72,3 @@
 </body>
 
 </html>
-
-<script>
-
-
-
-
-$(function() {
-
-
-	var responses = []
-
-		$.ajax({
-		type: 'GET',
-		dataType: 'json',
-		url: "http://localhost:3000#"
-		}).done(function(response) {
-			for (i = 0; i < response.length; i++) {
-					responses.push(response[i]["title"])
-			}
-
-			$( "#tags" ).autocomplete({
-				source: responses
-			});
-		})
-});
-
-// save the value of the input field
-// what the value is associated to within the question object
-// option 1) redirect to the object's show (within ajax )
-
-
-
-
-}
-</script>
