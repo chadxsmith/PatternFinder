@@ -78,26 +78,6 @@
 
 
 
-
-
-Narrator.prototype = {
-	search: function(){
-		$.ajax({
-			type: 'GET',
-			// data: { narrator: {gender: this.gender, accent: this. accent, voices: this.voices}}
-			dataType: 'json',
-			url: "http://localhost:3000/narrators"
-		}).done(function(response){
-			  response[i]["title"]
-		}).fail(function(){
-			console.log("failure")
-		}).always(function(){
-			console.log("you managed to do something right")
-		})
-	}
-}
-
-
 $(function() {
 
 
